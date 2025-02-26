@@ -9,7 +9,7 @@ const SibApiV3Sdk = require("sib-api-v3-sdk");
 let defaultClient = SibApiV3Sdk.ApiClient.instance;
 let apiKey = defaultClient.authentications["api-key"];
 apiKey.apiKey =
-  "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";
+  "";
 require("dotenv").config();
 
 // const transporter = nodemailer.createTransport({
@@ -66,8 +66,8 @@ async function sendNotificationViaSqs(data) {
     const params = {
       DelaySeconds: 0,
       MessageBody: JSON.stringify(message),
-      MessageDeduplicationId: "TheWhistler", 
-      MessageGroupId: "Group1", 
+      MessageDeduplicationId: "TheWhistler",
+      MessageGroupId: "Group1",
       QueueUrl: process.env.SQS_ACTIVITY_URL,
     };
 
@@ -100,10 +100,9 @@ async function sendResetPassword(req, res) {
       createdBy: "Admin",
     });
 
-    const redirectUrl = `https://dev.edbition.com/reset-password?uuid=${userUniqueId}&uid=${userId}&rn=${randomNumbers}&from=${
-      reqFrom ? reqFrom : "Client"
-    }`;
-    
+    const redirectUrl = `https://dev.edbition.com/reset-password?uuid=${userUniqueId}&uid=${userId}&rn=${randomNumbers}&from=${reqFrom ? reqFrom : "Client"
+      }`;
+
 
     const paramsKey = {
       Title: "Reset Your Password",

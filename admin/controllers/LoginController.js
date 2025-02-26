@@ -7,7 +7,7 @@ const SibApiV3Sdk = require("sib-api-v3-sdk");
 let defaultClient = SibApiV3Sdk.ApiClient.instance;
 let apiKey = defaultClient.authentications["api-key"];
 apiKey.apiKey =
-  "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";
+  "";
 require("dotenv").config();
 
 const parentLogin = async (req, res) => {
@@ -86,7 +86,7 @@ async function passwordResetReqAdmin(req, res, next) {
     //   where: { UserID: userId, uniqueID: userUniqueId },
     // });
     const adminExist = await staffAdmin.findOne({
-      where: { StaffID: userId},
+      where: { StaffID: userId },
     });
 
     if (adminExist) {
@@ -255,9 +255,9 @@ async function changePasswordAdmin(req, res) {
       where: whereCondition,
     });
 
-    if(!userData){
+    if (!userData) {
       return res.status(404).json({
-        message:"User not found!"
+        message: "User not found!"
       })
     }
 
@@ -275,9 +275,9 @@ async function changePasswordAdmin(req, res) {
 
     const decryptPassUserMain = decryptPassUser.toString(cryptoJS.enc.Utf8);
 
-    if(decryptPassDbMain == decryptPassUserMain){
+    if (decryptPassDbMain == decryptPassUserMain) {
       return res.status(403).json({
-        message:"The new password cannot be the same as the current password. Please choose a different password."
+        message: "The new password cannot be the same as the current password. Please choose a different password."
       })
     }
 

@@ -12,7 +12,7 @@ const { Op } = require("sequelize");
 let defaultClient = SibApiV3Sdk.ApiClient.instance;
 let apiKey = defaultClient.authentications["api-key"];
 apiKey.apiKey =
-  "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";
+  "";
 require("dotenv").config();
 
 const transporter = nodemailer.createTransport({

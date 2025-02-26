@@ -8,7 +8,7 @@ const SibApiV3Sdk = require("sib-api-v3-sdk");
 let defaultClient = SibApiV3Sdk.ApiClient.instance;
 let apiKey = defaultClient.authentications["api-key"];
 apiKey.apiKey =
-  "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";
+  "";
 // const { signUpSchema } = require('../helper/validation');
 
 const get_profile = async (req, res) => {
@@ -522,15 +522,15 @@ async function recoverUserAccount(req, res) {
     }
 
     await db.user.update(
-      {IsActive: 1},
-      {where:{UserID: userEmailExist?.UserID}}
+      { IsActive: 1 },
+      { where: { UserID: userEmailExist?.UserID } }
     );
 
     await db.useremail.update(
-      {IsActive: '1'},
-      {where:{UserID: userEmailExist?.UserID}}
+      { IsActive: '1' },
+      { where: { UserID: userEmailExist?.UserID } }
     );
-    
+
     return res.status(200).json({
       message: 'Account Recovered Successfully!'
     });

@@ -11,7 +11,7 @@ const SibApiV3Sdk = require("sib-api-v3-sdk");
 let defaultClient = SibApiV3Sdk.ApiClient.instance;
 let apiKey = defaultClient.authentications["api-key"];
 apiKey.apiKey =
-  "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";
+  "";
 // AWS.config.update({ region: process.env.SQS_REGION });
 // var sqs = new AWS.SQS({ apiVersion: process.env.SQS_API_VERSION });
 require("dotenv").config();
@@ -47,7 +47,7 @@ async function sendEmailAsNotification(req, res, next) {
     });
 
     emailDatabase.dataValues["name"] = userName;
-    
+
 
     const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
 
