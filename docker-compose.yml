@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  admin:
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    image: admin:latest  # Set image name
+    container_name: admin
+    ports:
+      - "5000:4000"
+    restart: always
+
+  client-steaming:
+    build:
+      context: ./client-steaming
+      dockerfile: Dockerfile
+    image: client-steaming:latest  # Set image name
+    container_name: client-steaming
+    ports:
+      - "5001:3200"
+    restart: always
+
+  clientlient:
+    build:
+      context: ./clientlient
+      dockerfile: Dockerfile
+    image: clientlient:latest  # Set image name
+    container_name: clientlient
+    ports:
+      - "5002:3001"
+    restart: always
